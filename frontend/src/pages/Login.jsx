@@ -35,7 +35,7 @@ const Login = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-8 rounded-lg shadow-md w-96 flex flex-col items-center">
+            <div className="bg-white p-8 rounded-lg shadow-md w-96 flex flex-col items-center select-none">
                 <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">Outreach Login</h2>
                 {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
 

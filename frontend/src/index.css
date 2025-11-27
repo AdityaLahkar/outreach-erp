@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+body {
+    @apply select-none;
+}
+
+body {
+    @apply select-none;
+}

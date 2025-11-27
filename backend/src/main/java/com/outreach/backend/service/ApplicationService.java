@@ -30,7 +30,11 @@ public class ApplicationService {
 
         if (existingApp.isPresent()) {
             PlacementStudent app = existingApp.get();
-            app.setAcceptance("SELECTED");
+            if ("SELECTED".equals(app.getAcceptance())) {
+                app.setAcceptance("APPLIED"); // Deselect
+            } else {
+                app.setAcceptance("SELECTED"); // Select
+            }
             placementStudentRepository.save(app);
             return true;
         } else {

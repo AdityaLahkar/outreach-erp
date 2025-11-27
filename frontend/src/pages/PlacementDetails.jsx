@@ -28,9 +28,8 @@ const PlacementDetails = () => {
             await selectStudent(id, studentId);
             // Refresh list to show updated status
             fetchStudents();
-            alert('Student selected successfully!');
         } catch (error) {
-            alert('Failed to select student');
+            console.error('Failed to select student', error);
         }
     };
 
@@ -78,22 +77,18 @@ const PlacementDetails = () => {
                                             )}
                                         </td>
                                         <td className="p-4">
-                                            {student.applicationStatus === 'SELECTED' ? (
-                                                <span className="text-green-700 font-bold flex items-center">
-                                                    ✓ Selected
-                                                </span>
-                                            ) : (
-                                                <button
-                                                    onClick={() => handleSelect(student.studentId)}
-                                                    disabled={!student.eligible}
-                                                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${student.eligible
-                                                            ? 'bg-blue-600 text-white hover:bg-blue-700'
-                                                            : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                        }`}
-                                                >
-                                                    Select
-                                                </button>
-                                            )}
+                                            <button
+                                                onClick={() => handleSelect(student.studentId)}
+                                                disabled={!student.eligible}
+                                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${student.applicationStatus === 'SELECTED'
+                                                    ? 'bg-red-100 text-red-700 hover:bg-red-200 border border-red-200'
+                                                    : student.eligible
+                                                        ? 'bg-blue-600 text-white hover:bg-blue-700'
+                                                        : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                                                    }`}
+                                            >
+                                                {student.applicationStatus === 'SELECTED' ? 'Deselect' : 'Select'}
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
